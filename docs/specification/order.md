@@ -167,11 +167,18 @@ Examples: `refund`, `return`, `credit`, `price_adjustment`, `dispute`,
   "id": "order_abc123",
   "checkout_id": "checkout_xyz789",
   "permalink_url": "https://business.com/orders/abc123",
+  "incoterms": "DDP",
   "line_items": [
     {
       "id": "li_shoes",
       "item": { "id": "prod_shoes", "title": "Running Shoes", "price": 3000 },
       "quantity": { "total": 3, "fulfilled": 3 },
+      "eccn": "EAR99",
+      "hs_code": "1234567890",
+      "coo": "US",
+      "un_number": "3090",
+      "un_packing_group": "I",
+      "un_packing_instruction": "PI968",
       "totals": [
         {"type": "subtotal", "amount": 9000},
         {"type": "total", "amount": 9000}
@@ -182,6 +189,12 @@ Examples: `refund`, `return`, `credit`, `price_adjustment`, `dispute`,
       "id": "li_shirts",
       "item": { "id": "prod_shirts", "title": "Cotton T-Shirt", "price": 2000 },
       "quantity": { "total": 2, "fulfilled": 0 },
+      "eccn": "EAR99",
+      "hs_code": "1234567890",
+      "coo": "US",
+      "un_number": "3090",
+      "un_packing_group": "I",
+      "un_packing_instruction": "PI968",
       "totals": [
         {"type": "subtotal", "amount": 4000},
         {"type": "total", "amount": 4000}
@@ -192,29 +205,55 @@ Examples: `refund`, `return`, `credit`, `price_adjustment`, `dispute`,
   "fulfillment": {
     "expectations": [
       {
-        "id": "exp_1",
+        "id": "buyer",
         "line_items": [{ "id": "li_shoes", "quantity": 3 }],
         "method_type": "shipping",
         "destination": {
-          "street_address": "123 Main St",
-          "address_locality": "Austin",
+          "street_address1": "123 Main St",
+          "street_address2": " ",
+          "street_address3": " ",
+          "address_city": "Austin",
           "address_region": "TX",
           "address_country": "US",
           "postal_code": "78701"
+          "phone": "1234567890",
+          "email": "fake@email.com",
+          "tax_id": "12-3456789",
+          "customs_id": "12-345678900",
+        },
+        "id": "ship_to_exp_1",
+        "line_items": [{ "id": "li_shoes", "quantity": 3 }],
+        "method_type": "shipping",
+        "destination": {
+          "street_address1": "123 Main St",
+          "street_address2": " ",
+          "street_address3": " ",
+          "address_city": "Austin",
+          "address_region": "TX",
+          "address_country": "US",
+          "postal_code": "78701"
+          "phone": "1234567890",
+          "email": "fake@email.com",
+          "tax_id": "12-3456789",
+          "customs_id": "12-345678900",
         },
         "description": "Arrives in 2-3 business days",
-        "fulfillable_on": "now"
+        "fulfillable_on": "2025-01-15T00:00:00Z"
       },
       {
-        "id": "exp_2",
+        "id": "ship_to_exp_2",
         "line_items": [{ "id": "li_shirts", "quantity": 2 }],
         "method_type": "shipping",
         "destination": {
           "street_address": "123 Main St",
-          "address_locality": "Austin",
+          "street_address2": " ",
+          "street_address3": " ",
+          "address_city": "Austin",
           "address_region": "TX",
           "address_country": "US",
           "postal_code": "78701"
+          "phone": "1234567890",
+          "email": "fake@email.com",
         },
         "description": "Backordered - ships Jan 15, arrives in 7-10 days",
         "fulfillable_on": "2025-01-15T00:00:00Z"
@@ -245,8 +284,12 @@ Examples: `refund`, `return`, `credit`, `price_adjustment`, `dispute`,
   ],
   "totals": [
     { "type": "subtotal", "amount": 13000 },
-    { "type": "fulfillment", "amount": 1200 },
+    { "type": "discount", "amount": 0 },
+    { "type": "shipping", "amount": 20 },
+    { "type": "insurance", "amount": 1200 },
+    { "type": "additional_fees", "amount": 1200 },
     { "type": "tax", "amount": 1142 },
+    { "type": "duty", "amount": 0 },
     { "type": "total", "amount": 15342 }
   ]
 }
