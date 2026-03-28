@@ -92,9 +92,13 @@ method.
 
 {{ schema_fields('types/total_resp', 'fulfillment') }}
 
-#### Postal Address
+#### Consignee Address
 
-{{ schema_fields('postal_address', 'fulfillment') }}
+{{ schema_fields('consignee_address', 'fulfillment') }}
+
+#### Buyer Address
+
+{{ schema_fields('buyer_address', 'fulfillment') }}
 
 ### Example
 
@@ -105,16 +109,23 @@ method.
       {
         "id": "method_1",
         "type": "shipping",
+         "incoterms": "DDP",
         "line_item_ids": ["shirt", "pants"],
         "selected_destination_id": "dest_1",
         "destinations": [
           {
             "id": "dest_1",
-            "street_address": "123 Main St",
-            "address_locality": "Springfield",
+            "name": "Jane Doe",
+            "name_company": " ",
+            "street_address1": "123 Main St",
+            "street_address2": " ",
+            "street_address3": " ",
+            "address_city": "Springfield",
             "address_region": "IL",
             "postal_code": "62701",
             "address_country": "US"
+            "phone": "1234567890",
+            "email": "fake@email.com",
           }
         ],
         "groups": [
@@ -144,6 +155,9 @@ method.
                     "amount": 1000
                   }
                 ]
+
+              }
+            ],
               }
             ]
           }
@@ -242,7 +256,7 @@ method, and when. Use cases:
       {
         "type": "shipping",
         "line_item_ids": ["shirt", "pants"],
-        "fulfillable_on": "now"
+        "fulfillable_on": "2026-12-01T10:00:00Z"
       },
       {
         "type": "pickup",
