@@ -231,8 +231,12 @@ Maps to the [Create Checkout](checkout.md#create-checkout) operation.
             "status": "incomplete",
             "buyer": {
               "email": "jane.doe@example.com",
+              "phone": "1234567890",
               "first_name": "Jane",
               "last_name": "Doe"
+              "company_name": " ",
+              "tax_id": "12-3456789",
+              "customs_id": "12-345678900",
             },
             "line_items": [
               {
@@ -275,8 +279,10 @@ Maps to the [Create Checkout](checkout.md#create-checkout) operation.
                   "destinations": [
                     {
                       "id": "dest_home",
-                      "street_address": "123 Main St",
-                      "address_locality": "Springfield",
+                      "street_address1": "123 Main St",
+                      "street_address2": " ",
+                      "street_address3": " ",
+                      "address_city": "Springfield",
                       "address_region": "IL",
                       "postal_code": "62701",
                       "address_country": "US"
